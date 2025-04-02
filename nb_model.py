@@ -5,13 +5,13 @@ import urllib.request
 
 
 
-url = "https://github.com/Dawood006/Spam-Guard-APP/raw/b197e70d5c1e2bd1dc4d6ef06b2142c99ccb42e5/model_nb"
-model_path = "model_nb"
+url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_nb.pkl"
+model_path = "model_nb.pkl"
 urllib.request.urlretrieve(url, model_path)
 
 
-url2 = "https://github.com/Dawood006/Spam-Guard-APP/raw/0185e9fa34eee419d96b40da9ade39f1d5bcc21a/model_cv"
-model_path2 = "model_cv"
+url2 = "https://github.com/Dawood006/Spam-Guard-APP/blob/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_cv.pkl"
+model_path2 = "model_cv.pkl"
 urllib.request.urlretrieve(url2, model_path2)
 # Load models
 @st.cache_resource
