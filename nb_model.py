@@ -7,9 +7,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 # Load models
 @st.cache_resource
 def load_models():
-    with open(r'https://github.com/Dawood006/Spam-Guard-APP/raw/0185e9fa34eee419d96b40da9ade39f1d5bcc21a/model_cv','rb') as file:
+    with open(r'https://github.com/Dawood006/Spam-Guard-APP/raw/b197e70d5c1e2bd1dc4d6ef06b2142c99ccb42e5/model_nb','rb') as file:
         gb = pickle.load(file)
-    with open('model_cv','rb') as file:
+    with open(r'https://github.com/Dawood006/Spam-Guard-APP/raw/0185e9fa34eee419d96b40da9ade39f1d5bcc21a/model_cv','rb') as file:
         cv = pickle.load(file)
     return gb, cv
 
