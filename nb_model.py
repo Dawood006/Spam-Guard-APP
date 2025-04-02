@@ -1,8 +1,7 @@
 import pickle
 import streamlit as st
 import numpy as np
-from sklearn.naive_bayes import GaussianNB
-from sklearn.feature_extraction.text import CountVectorizer
+
 
 # Load models
 @st.cache_resource
