@@ -17,7 +17,7 @@ urllib.request.urlretrieve(url2, model_path2)
 @st.cache_resource
 def load_models():
     with open(model_path, "rb") as file:
-        model = pickle.load(file)
+        gb = pickle.load(file)
 
     with open(model_path2,'rb') as file:
         cv = pickle.load(file)
