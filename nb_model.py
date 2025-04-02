@@ -12,7 +12,7 @@ with open(model_path, "rb") as file:
     gb = pickle.load(file)
 
 
-url2 = "https://github.com/Dawood006/Spam-Guard-APP/blob/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_cv.pkl"
+url2 = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_cv.pkl"
 model_path2 = "model_cv.pkl"
 urllib.request.urlretrieve(url2, model_path2)
 with open(model_path2,"rb") as file:
