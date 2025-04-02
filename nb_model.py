@@ -4,26 +4,21 @@ import numpy as np
 import urllib.request
 
 
-
+#load models
 url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_nb.pkl"
 model_path = "model_nb.pkl"
 urllib.request.urlretrieve(url, model_path)
+with open(model_path, "rb") as file:
+    gb = pickle.load(file)
 
 
 url2 = "https://github.com/Dawood006/Spam-Guard-APP/blob/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_cv.pkl"
 model_path2 = "model_cv.pkl"
 urllib.request.urlretrieve(url2, model_path2)
-# Load models
-@st.cache_resource
-def load_models():
-    with open(model_path, "rb") as file:
-        gb = pickle.load(file)
+with open(model_path2,"rb") as file:
+    cv = pickle.load(file)
 
-    with open(model_path2,'rb') as file:
-        cv = pickle.load(file)
-    return gb, cv
-
-gb, cv = load_models()
+    
 
 def predict_spam(data):
     data = cv.transform([data])
