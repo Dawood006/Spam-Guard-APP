@@ -25,8 +25,8 @@ def load_model_from_url(url):
 # Load models
 with st.spinner("Loading PuppyGuard's brain..."):
     # GitHub raw URLs for models
-    model_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_nb.pkl"
-    cv_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_cv.pkl"
+    model_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/7b0ed1960bdbd8e12278707a71a2d32dd62be47c/model2_gb.pkl"
+    cv_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/7b0ed1960bdbd8e12278707a71a2d32dd62be47c/model1_cv.pkl"
     
     # Load models
     gb = load_model_from_url(model_url)
