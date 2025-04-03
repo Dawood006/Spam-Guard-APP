@@ -2,8 +2,8 @@ import pickle
 import streamlit as st
 import numpy as np
 import urllib.request
-import sklearn
-
+import warnings
+warnings.filterwarnings('ignore')
 # Load models
 def load_model(url, filename):
     urllib.request.urlretrieve(url, filename)
