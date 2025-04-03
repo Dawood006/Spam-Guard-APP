@@ -2,19 +2,28 @@ import pickle
 import streamlit as st
 import numpy as np
 import urllib.request
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import GaussianNB
 
 
 # Load models
 def load_model(url, filename):
-    urllib.request.urlretrieve(url, filename)
-    with open(filename, "rb") as file:
-        return pickle.load(file)
+    try:
+        urllib.request.urlretrieve(url, filename)
+        with open(filename, "rb") as file:
+            return pickle.load(file)
+    except Exception as e:
+        st.error(f"Error loading model from {url}: {e}")
+        return None
+
 
 # Publicly accessible model URLs
 model_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_nb.pkl"
 cv_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_cv.pkl"
 
 # Load models safely
+gb = None
+cv = None
 try:
     gb = load_model(model_url, "model_nb.pkl")
     cv = load_model(cv_url, "model_cv.pkl")
@@ -23,9 +32,12 @@ except Exception as e:
 
 # Function for spam prediction
 def predict_spam(data):
+    if gb is None or cv is None:
+        st.error("Models are not loaded properly.")
+        return None
     try:
-        transformed_data = cv.transform([data])
-        prediction = gb.predict(transformed_data)  # Avoid forcing to dense array
+        transformed_data = cv.transform([data])  # Transform the input data
+        prediction = gb.predict(transformed_data)  # Predict using Naive Bayes
         return prediction[0]
     except Exception as e:
         st.error(f"Prediction error: {e}")
