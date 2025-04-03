@@ -2,8 +2,6 @@ import pickle
 import streamlit as st
 import numpy as np
 import urllib.request
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import GaussianNB
 
 
 # Load models
