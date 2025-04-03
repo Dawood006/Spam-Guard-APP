@@ -1,6 +1,8 @@
-urllib3
-scikit-learn
 streamlit
 numpy
-pickle
-requests
+pandas
+scikit-learn
+joblib
+matplotlib
+seaborn
+pickle-mixin
