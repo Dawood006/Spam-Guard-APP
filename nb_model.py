@@ -2,6 +2,7 @@ import pickle
 import streamlit as st
 import numpy as np
 import urllib.request
+import sklearn
 
 # Load models
 def load_model(url, filename):
