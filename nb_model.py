@@ -3,40 +3,37 @@ import streamlit as st
 import numpy as np
 import urllib.request
 
+# Load models
+def load_model(url, filename):
+    urllib.request.urlretrieve(url, filename)
+    with open(filename, "rb") as file:
+        return pickle.load(file)
 
-#load models
-url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_nb.pkl"
-model_path = "model_nb.pkl"
-urllib.request.urlretrieve(url, model_path)
-with open(model_path, "rb") as file:
-    gb = pickle.load(file)
+# Publicly accessible model URLs
+model_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_nb.pkl"
+cv_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_cv.pkl"
 
+# Load models safely
+try:
+    gb = load_model(model_url, "model_nb.pkl")
+    cv = load_model(cv_url, "model_cv.pkl")
+except Exception as e:
+    st.error(f"Error loading models: {e}")
 
-url2 = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf80e103a5028b2f2c393/model_cv.pkl"
-model_path2 = "model_cv.pkl"
-urllib.request.urlretrieve(url2, model_path2)
-with open(model_path2,"rb") as file:
-    cv = pickle.load(file)
-
-    
-
+# Function for spam prediction
 def predict_spam(data):
-    data = cv.transform([data])
-    return gb.predict(data.toarray())
+    try:
+        transformed_data = cv.transform([data])
+        prediction = gb.predict(transformed_data)  # Avoid forcing to dense array
+        return prediction[0]
+    except Exception as e:
+        st.error(f"Prediction error: {e}")
+        return None
 
-# Adorable UI
-# st.set_page_config(
-#     page_title="🐶 PuppyGuard - Email Spam Detector",
-#     page_icon="🐾",
-#     layout="centered"
-# )
-
-# Custom CSS for adorable styling
+# UI Styling
 st.markdown("""
 <style>
-    .stApp {
-        background-color: #FFF5F5;
-    }
+    .stApp { background-color: #FFF5F5; }
     .stTextArea>div>div>textarea {
         background-color: #FFF9F9;
         border-radius: 15px;
@@ -52,63 +49,35 @@ st.markdown("""
     }
     .stButton>button:hover {
         background-color: #FF69B4 !important;
-        color: white !important;
-    }
-    .css-1aumxhk {
-        background-color: #FFD1DC;
-        border-radius: 15px;
-        padding: 15px;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Header with cute emoji
-st.markdown("""
-# 🐶 PuppyGuard 
-### Your Friendly Email Spam Detector 🛡️
-""")
+# App Header
+st.markdown("# 🐶 PuppyGuard - Spam Detector 🛡️")
+st.image("https://media.istockphoto.com/id/1454135464/vector/shield-paw-print-dog-icon-silhouette.jpg", width=100)
 
-st.image("https://media.istockphoto.com/id/1454135464/vector/shield-paw-print-dog-icon-silhouette.jpg?s=612x612&w=0&k=20&c=aDUUkZkBynuA-IIqGvW5vbkhOXDWPNdSGdHj8VU5Gdo=", width=100)
+st.markdown("PuppyGuard will sniff out any suspicious content in your emails! Just paste the text below and we'll check it for you. 🐾")
 
-st.markdown("""
-PuppyGuard will sniff out any suspicious content in your emails! 
-Just paste the text below and we'll check it for you. 🐾
-""")
+# Text input
+user_input = st.text_area("📝 Paste your email content here:", height=200, placeholder="PuppyGuard is waiting to check your text... Woof! 🐕")
 
-# Text area with cute placeholder
-user_input = st.text_area(
-    "📝 Paste your email content here:", 
-    height=200,
-    placeholder="PuppyGuard is waiting to check your text... Woof! 🐕"
-)
-
+# Button to check spam
 if st.button("🔍 Check for Spam!"):
-    if not user_input:
+    if not user_input.strip():
         st.warning("Please enter some text for PuppyGuard to check! 🐾")
     else:
         with st.spinner("PuppyGuard is sniffing your text... 🐾"):
             prediction = predict_spam(user_input)
-            
-            if prediction == 1:
-                st.error("""
-                🚨 *WOOF WOOF! SPAM ALERT!* 🚨
-                
-                PuppyGuard detected malicious content! 
-                Better not open this one! 🦴
-                """)
-                st.image("https://thumbs.dreamstime.com/b/angry-dog-mascot-cartoon-angry-dog-mascot-cartoon-illustration-100486272.jpg", width=100)
-            else:
-                st.success("""
-                🎉 *YAY! NO SPAM DETECTED!* 🎉
-                
-                PuppyGuard gives this email a paws-up! 
-                It looks safe to open! 🐶
-                """)
-                st.image("https://img.icons8.com/color/96/000000/dog.png", width=100)
-                st.balloons()
+            if prediction is not None:
+                if prediction == 1:
+                    st.error("🚨 WOOF! SPAM ALERT! 🚨\n\nPuppyGuard detected malicious content! Better not open this one! 🦴")
+                    st.image("https://thumbs.dreamstime.com/b/angry-dog-mascot-cartoon-angry-dog-mascot-cartoon-illustration-100486272.jpg", width=100)
+                else:
+                    st.success("🎉 NO SPAM DETECTED! 🎉\n\nPuppyGuard gives this email a paws-up! It looks safe to open! 🐶")
+                    st.image("https://img.icons8.com/color/96/000000/dog.png", width=100)
+                    st.balloons()
 
-# Cute footer
+# Footer
 st.markdown("---")
-st.markdown("""
-<small>Made with ❤️🐾 /small>
-""", unsafe_allow_html=True)
+st.markdown("<small>Made with ❤️🐾</small>", unsafe_allow_html=True)
