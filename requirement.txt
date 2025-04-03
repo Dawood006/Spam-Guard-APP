@@ -1,5 +1,7 @@
 pandas
+urllib3
 scikit-learn
 streamlit
 numpy
-urllib3
+pickle-mixin  
+
