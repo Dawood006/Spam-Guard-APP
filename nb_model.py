@@ -3,6 +3,7 @@ import streamlit as st
 import numpy as np
 import urllib.request
 
+
 # Load models
 def load_model(url, filename):
     urllib.request.urlretrieve(url, filename)
@@ -16,7 +17,7 @@ cv_url = "https://github.com/Dawood006/Spam-Guard-APP/raw/9dfaeb5a849af9a24e8cf8
 # Load models safely
 try:
     gb = load_model(model_url, "model_nb.pkl")
-    # cv = load_model(cv_url, "model_cv.pkl")
+    cv = load_model(cv_url, "model_cv.pkl")
 except Exception as e:
     st.error(f"Error loading models: {e}")
 
