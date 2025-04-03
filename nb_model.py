@@ -54,7 +54,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # App Header
-st.markdown("# 🐶 PuppyGuard - Spam Detector 🛡️")
+st.markdown("# 🐶 PuppyGuard - Spam Detector2 🛡️")
 st.image("https://media.istockphoto.com/id/1454135464/vector/shield-paw-print-dog-icon-silhouette.jpg", width=100)
 
 st.markdown("PuppyGuard will sniff out any suspicious content in your emails! Just paste the text below and we'll check it for you. 🐾")
