@@ -3,9 +3,7 @@ import streamlit as st
 import numpy as np
 import requests
 import io
-# Import scikit-learn modules explicitly
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import GaussianNB
+
 
 # App title and configuration
 st.set_page_config(page_title="PuppyGuard Spam Detector", page_icon="🐶")
