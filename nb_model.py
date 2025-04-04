@@ -106,7 +106,8 @@ if st.button("🔍 Check for Spam!"):
                 PuppyGuard detected malicious content!  
                 Better not open this one! 🦴
                 """)
-                st.image("https://img.icons8.com/color/452/dog-angry.png", width=120)  # angry dog
+                st.image("https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/96/external-warning-signs-kiranshastry-lineal-color-kiranshastry.png
+", width=120)  # angry dog
             else:
                 st.success("""
                 🎉 *YAY! NO SPAM DETECTED!* 🎉  
