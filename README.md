@@ -20,8 +20,8 @@ Spam Guard App (aka **PuppyGuard**) is a fun and user-friendly web app that help
 
 | File | Description |
 |------|-------------|
-| `app.py` | 🐍 The main Streamlit app. Loads models, takes user input, predicts if a message is spam, and displays the result with a fun UI. |
-| `nb_model.py` | Original script with similar logic — can be replaced by `app.py` for a cleaner structure. |
+| `app.py` | Loads models, takes user input, predicts if a message is spam, and displays the result with a fun UI. |
+| `nb_model.py` | 🐍 The main Streamlit app.Original script — can be replaced by `app.py` for a cleaner structure. |
 | `model_nb.pkl` | Trained Naive Bayes classifier. |
 | `model_cv.pkl` | CountVectorizer used to transform input text. |
 | `Naivebayes_st.ipynb` | Jupyter Notebook showing full model training and evaluation. |
