@@ -1,8 +1,3 @@
-# Spam-Guard-APP
-
-
----
-
 # 🛡️ Spam Guard App
 
 🔗 **Live App**: [https://puppyguard.streamlit.app/](https://puppyguard.streamlit.app/)
