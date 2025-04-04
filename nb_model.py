@@ -101,20 +101,20 @@ if st.button("🔍 Check for Spam!"):
             prediction = predict_spam(user_input)
             
             if prediction == 1:
-            st.error("""
-            🚨 *WOOF WOOF! SPAM ALERT!* 🚨  
-            PuppyGuard detected malicious content!  
-            Better not open this one! 🦴
-            """)
-            st.image("https://img.icons8.com/color/452/dog-angry.png", width=120)  # angry dog
+                st.error("""
+                🚨 *WOOF WOOF! SPAM ALERT!* 🚨  
+                PuppyGuard detected malicious content!  
+                Better not open this one! 🦴
+                """)
+                st.image("https://img.icons8.com/color/452/dog-angry.png", width=120)  # angry dog
             else:
-            st.success("""
-            🎉 *YAY! NO SPAM DETECTED!* 🎉  
-            PuppyGuard gives this email a paws-up!  
-            It looks safe to open! 🐶
-            """)
-            st.image("https://img.icons8.com/color/452/dog.png", width=120)  # happy dog
-            st.balloons()
+                st.success("""
+                🎉 *YAY! NO SPAM DETECTED!* 🎉  
+                PuppyGuard gives this email a paws-up!  
+                It looks safe to open! 🐶
+                """)
+                st.image("https://img.icons8.com/color/452/dog.png", width=120)  # happy dog
+                st.balloons()
 
 # Footer
 st.markdown("---")
