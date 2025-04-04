@@ -3,7 +3,6 @@
 
 ---
 
-```markdown
 # 🛡️ Spam Guard App
 
 🔗 **Live App**: [https://puppyguard.streamlit.app/](https://puppyguard.streamlit.app/)
@@ -41,7 +40,6 @@ Spam Guard App (aka **PuppyGuard**) is a fun and user-friendly web app that help
    ```bash
    git clone https://github.com/Dawood006/Spam-Guard-APP.git
    cd Spam-Guard-APP
-   ```
 
 2. **Create Virtual Environment (Optional but Recommended)**
    ```bash
