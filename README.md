@@ -20,12 +20,13 @@ Spam Guard App (aka **PuppyGuard**) is a fun and user-friendly web app that help
 
 | File | Description |
 |------|-------------|
-| `nb_model.py` | Main Streamlit app script. Loads models and displays the adorable spam detection UI. |
-| `model_nb.pkl` | Pickled trained Gaussian Naive Bayes classifier. |
-| `model_cv.pkl` | Pickled `CountVectorizer` used to transform input text for prediction. |
-| `Naivebayes_st.ipynb` | Jupyter notebook that explores data processing, model training, evaluation, and insights. |
-| `spam.csv` | Dataset used to train and evaluate spam detection model. |
-| `requirements.txt` | List of Python dependencies to run the app. |
+| `app.py` | 🐍 The main Streamlit app. Loads models, takes user input, predicts if a message is spam, and displays the result with a fun UI. |
+| `nb_model.py` | Original script with similar logic — can be replaced by `app.py` for a cleaner structure. |
+| `model_nb.pkl` | Trained Naive Bayes classifier. |
+| `model_cv.pkl` | CountVectorizer used to transform input text. |
+| `Naivebayes_st.ipynb` | Jupyter Notebook showing full model training and evaluation. |
+| `spam.csv` | Dataset of labeled SMS messages used for training. |
+| `requirements.txt` | List of required Python libraries. |
 
 ---
 
@@ -124,6 +125,3 @@ Made with ❤️ by [Dawood006](https://github.com/Dawood006)
 If you find this project helpful or fun, give it a ⭐ on GitHub or try out the [live app](https://puppyguard.streamlit.app/)! 🐾
 ```
 
----
-
-Let me know if you want a Markdown download file or want to auto-create a `LICENSE` or `app.py` file too!
