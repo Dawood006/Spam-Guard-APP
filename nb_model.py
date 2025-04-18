@@ -42,7 +42,7 @@ def predict_spam(data):
 # ---------- Streamlit UI Starts Here ---------- #
 
 # Page settings
-st.set_page_config(page_title="🐶 PuppyGuard", page_icon="🐾", layout="centered")
+# st.set_page_config(page_title="🐶 PuppyGuard", page_icon="🐾", layout="centered")
 
 # Custom CSS styling
 st.markdown("""
