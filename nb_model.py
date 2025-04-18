@@ -90,7 +90,7 @@ Just paste the text below and we'll check it for you. 🐾
 user_input = st.text_area(
     "📝 Paste your email content here:", 
     height=200,
-    placeholder="PuppyGuard is waiting to check your text... Woof! 🐕   (Enter 10 min. character))"
+    placeholder="PuppyGuard is waiting to check your text... Woof! 🐕   (Enter 10 min. character)"
 )
 
 if st.button("🔍 Check for Spam!"):
